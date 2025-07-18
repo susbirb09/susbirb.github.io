@@ -5,119 +5,113 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>susbirb's Minecraft Servers</title>
   <style>
+    /* Use a pixelated font with fallback monospace */
     @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
     body {
+      background: #fff;
+      color: #000;
+      font-family: 'Press Start 2P', monospace, monospace;
       margin: 0;
-      background: #0d001f;
-      color: #39ff14;
-      font-family: 'Press Start 2P', cursive, monospace;
+      padding: 1.5rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px;
       min-height: 100vh;
     }
-    h1, h2 {
-      font-size: 1.2rem;
-      color: #0ff;
-      margin-bottom: 1rem;
+
+    h1 {
+      font-size: 1.4rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      letter-spacing: 2px;
     }
+
     section {
-      background: #111122;
-      border: 2px solid #0ff;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 15px 0;
-      width: 100%;
+      background: #f0f0f0;
+      border: 4px solid #000;
+      border-radius: 0;
+      padding: 1rem 1.5rem;
       max-width: 600px;
+      width: 100%;
+      margin-bottom: 2rem;
+      box-sizing: border-box;
     }
+
     .server {
-      margin-bottom: 15px;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid #000;
     }
+
+    .server:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
     .server h2 {
-      color: #ff00ff;
-      margin: 0 0 10px 0;
+      margin: 0 0 0.5rem 0;
+      font-size: 0.85rem;
     }
+
     .ip {
-      font-size: 1.1rem;
-      margin-bottom: 8px;
+      font-size: 0.75rem;
+      margin-bottom: 0.3rem;
+      user-select: all;
     }
+
     .status {
       font-weight: bold;
+      margin-bottom: 0.3rem;
     }
+
     .online {
-      color: #39ff14;
+      color: #008000; /* Dark green */
     }
+
     .offline {
-      color: #ff0033;
+      color: #b22222; /* Firebrick red */
     }
+
     .players {
-      margin-top: 5px;
-      font-size: 0.85rem;
+      font-size: 0.7rem;
       font-family: monospace;
+      color: #333;
       white-space: pre-wrap;
     }
-    #updates h2, #polls h2 {
-      color: #ff9900;
-    }
-    #updates p {
-      font-size: 0.9rem;
-      line-height: 1.3;
-    }
-    iframe {
-      width: 100%;
-      height: 500px;
-      border: none;
-    }
+
     footer {
-      margin-top: auto;
-      padding: 10px;
-      font-size: 0.7rem;
+      font-size: 0.6rem;
       color: #555;
-    }
-    @media (max-width: 640px) {
-      h1 {
-        font-size: 1rem;
-      }
+      margin-top: auto;
+      user-select: none;
+      letter-spacing: 1px;
     }
   </style>
 </head>
 <body>
   <h1>susbirb's Minecraft Servers</h1>
-
   <section id="servers">
     <div class="server" id="server-1">
-      <h2>1.12.2 Server</h2>
+      <h2>1.12 Server</h2>
       <div class="ip">IP: <span>mc12.susbirb.com</span></div>
-      <div class="status">Checking status...</div>
+      <div class="status">Loading status...</div>
       <div class="players"></div>
     </div>
     <div class="server" id="server-2">
       <h2>1.19 Server</h2>
       <div class="ip">IP: <span>mc19.susbirb.com</span></div>
-      <div class="status">Checking status...</div>
+      <div class="status">Loading status...</div>
       <div class="players"></div>
     </div>
     <div class="server" id="server-3">
       <h2>1.7 Server</h2>
       <div class="ip">IP: <span>mc7.susbirb.com</span></div>
-      <div class="status">Checking status...</div>
+      <div class="status">Loading status...</div>
       <div class="players"></div>
     </div>
   </section>
-
-  <section id="updates">
-    <h2>Server Updates</h2>
-    <p><strong>July 18, 2025:</strong> Added 1.7 server support!</p>
-    <p><strong>July 17, 2025:</strong> Paintball plugin added to 1.12.2!</p>
-  </section>
-
-  <section id="polls">
-    <h2>Vote in our Poll</h2>
-    <!-- Replace strawpoll ID with your own -->
-    <iframe src="https://strawpoll.com/embed/yourpollid" allowfullscreen scrolling="no"></iframe>
-  </section>
-
   <footer>
     &copy; 2025 susbirb
   </footer>
@@ -162,7 +156,7 @@
     }
 
     refreshAll();
-    setInterval(refreshAll, 60 * 1000); // refresh every 60 seconds
+    setInterval(refreshAll, 60 * 1000); // Refresh every 60 seconds
   </script>
 </body>
 </html>
