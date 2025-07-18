@@ -5,19 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>susbirb's Minecraft Servers</title>
   <style>
-    /* Use a pixelated font with fallback monospace */
     @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
     body {
       background: #fff;
       color: #000;
-      font-family: 'Press Start 2P', monospace, monospace;
+      font-family: 'Press Start 2P', monospace;
       margin: 0;
       padding: 1.5rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-height: 100vh;
     }
 
     h1 {
@@ -57,34 +55,13 @@
 
     .ip {
       font-size: 0.75rem;
-      margin-bottom: 0.3rem;
       user-select: all;
-    }
-
-    .status {
-      font-weight: bold;
-      margin-bottom: 0.3rem;
-    }
-
-    .online {
-      color: #008000; /* Dark green */
-    }
-
-    .offline {
-      color: #b22222; /* Firebrick red */
-    }
-
-    .players {
-      font-size: 0.7rem;
-      font-family: monospace;
-      color: #333;
-      white-space: pre-wrap;
     }
 
     footer {
       font-size: 0.6rem;
       color: #555;
-      margin-top: auto;
+      margin-top: 3rem;
       user-select: none;
       letter-spacing: 1px;
     }
@@ -93,70 +70,21 @@
 <body>
   <h1>susbirb's Minecraft Servers</h1>
   <section id="servers">
-    <div class="server" id="server-1">
+    <div class="server">
       <h2>1.12 Server</h2>
       <div class="ip">IP: <span>mc12.susbirb.com</span></div>
-      <div class="status">Loading status...</div>
-      <div class="players"></div>
     </div>
-    <div class="server" id="server-2">
+    <div class="server">
       <h2>1.19 Server</h2>
       <div class="ip">IP: <span>mc19.susbirb.com</span></div>
-      <div class="status">Loading status...</div>
-      <div class="players"></div>
     </div>
-    <div class="server" id="server-3">
+    <div class="server">
       <h2>1.7 Server</h2>
       <div class="ip">IP: <span>mc7.susbirb.com</span></div>
-      <div class="status">Loading status...</div>
-      <div class="players"></div>
     </div>
   </section>
   <footer>
     &copy; 2025 susbirb
   </footer>
-
-  <script>
-    async function updateServerStatus(serverId, address) {
-      const container = document.getElementById(serverId);
-      const statusEl = container.querySelector('.status');
-      const playersEl = container.querySelector('.players');
-      try {
-        const res = await fetch(`https://api.mcsrvstat.us/2/${address}`);
-        if (!res.ok) throw new Error('Network response not ok');
-        const data = await res.json();
-
-        if (data.online) {
-          statusEl.textContent = "✅ Online — " + data.players.online + "/" + data.players.max + " Players";
-          statusEl.classList.remove('offline');
-          statusEl.classList.add('online');
-          if (data.players.list && data.players.list.length > 0) {
-            playersEl.textContent = "Players: " + data.players.list.join(", ");
-          } else {
-            playersEl.textContent = "Players: (none visible)";
-          }
-        } else {
-          statusEl.textContent = "❌ Offline";
-          statusEl.classList.remove('online');
-          statusEl.classList.add('offline');
-          playersEl.textContent = "";
-        }
-      } catch (e) {
-        statusEl.textContent = "⚠️ Error fetching status";
-        statusEl.classList.remove('online');
-        statusEl.classList.add('offline');
-        playersEl.textContent = "";
-      }
-    }
-
-    function refreshAll() {
-      updateServerStatus('server-1', 'mc12.susbirb.com');
-      updateServerStatus('server-2', 'mc19.susbirb.com');
-      updateServerStatus('server-3', 'mc7.susbirb.com');
-    }
-
-    refreshAll();
-    setInterval(refreshAll, 60 * 1000); // Refresh every 60 seconds
-  </script>
 </body>
 </html>
